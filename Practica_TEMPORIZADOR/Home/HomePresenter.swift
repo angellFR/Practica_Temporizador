@@ -26,6 +26,14 @@ class HomePresenter {
 
 //MARK: - Presenter Methods
 extension HomePresenter: HomePresenterProtocol {
+    func comentariosVc() {
+        router.comentariosVc()
+    }
+    
+    func configurationVc() {
+        router.configurationVc()
+    }
+    
     
 }
 

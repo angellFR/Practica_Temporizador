@@ -12,11 +12,13 @@ import Foundation
 
 //MARK: Wireframe -
 protocol HomeWireframeProtocol: AnyObject {
-
+    func comentariosVc()
+    func configurationVc()
 }
 //MARK: Presenter -
 protocol HomePresenterProtocol: AnyObject {
-
+    func comentariosVc()
+    func configurationVc()
 }
 
 //MARK: Interactor -
