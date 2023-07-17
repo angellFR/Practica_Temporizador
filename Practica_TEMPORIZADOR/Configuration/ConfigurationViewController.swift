@@ -21,7 +21,8 @@ class ConfigurationViewController: UIViewController {
     var validationVS = false
     var validationSV = false
     var validationS = false
-    var validacion: Int = 0
+    var validationBmario = false
+    var validationTono = false
     var player: AVAudioPlayer?
     
     
@@ -67,6 +68,41 @@ class ConfigurationViewController: UIViewController {
         return label
     }()
     
+    private var labelPreferenciaSonido: UILabel = {
+        let label = UILabel()
+        label.text = "Sonidos:"
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
+        return label
+    }()
+    
+    private var labelTono: UILabel = {
+        let label = UILabel()
+        label.text = "Tono"
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
+        return label
+    }()
+    
+    private var buttonTono: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "checbox"), for: .normal)
+        button.addTarget(self, action: #selector(tono), for: .touchUpInside)
+        return button
+    }()
+    
+    private var labelMarioBros: UILabel = {
+        let label = UILabel()
+        label.text = "MarioBros"
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
+        return label
+    }()
+    
+    private var buttonMarioBros: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "checbox"), for: .normal)
+        button.addTarget(self, action: #selector(marioBros), for: .touchUpInside)
+        return button
+    }()
+    
     
     //MARK: - Life Cycle
 	override func viewDidLoad() {
@@ -96,6 +132,22 @@ class ConfigurationViewController: UIViewController {
         
         view.addSubview(labelSonido)
         labelSonido.addAnchorsAndSize(width: nil, height: nil, left: 115, top: 50, right: nil, bottom: nil, withAnchor: .top, relativeToView: labelVibrar)
+        
+        view.addSubview(labelPreferenciaSonido)
+        labelPreferenciaSonido.addAnchorsAndSize(width: nil, height: nil, left: 35, top: 45, right: nil, bottom: nil,withAnchor: .top,relativeToView: labelSonido)
+        
+        view.addSubview(buttonMarioBros)
+        buttonMarioBros.addAnchorsAndSize(width: 50, height: 50, left: 35, top: 20, right: nil, bottom: nil,withAnchor: .top,relativeToView: labelPreferenciaSonido)
+        
+        view.addSubview(labelMarioBros)
+        labelMarioBros.addAnchorsAndSize(width: nil, height: nil, left: 115, top: 30, right: nil, bottom: nil,withAnchor: .top,relativeToView: labelPreferenciaSonido)
+        
+        view.addSubview(buttonTono)
+        buttonTono.addAnchorsAndSize(width: 50, height: 50, left: 35, top: 20, right: nil, bottom: nil,withAnchor: .top, relativeToView: buttonMarioBros)
+        
+        view.addSubview(labelTono)
+        labelTono.addAnchorsAndSize(width: nil, height: nil, left: 115, top: 50, right: nil, bottom: nil, withAnchor: .top, relativeToView:labelMarioBros)
+        
         
         
     }
@@ -127,7 +179,6 @@ extension ConfigurationViewController {
             buttonVibrarSonito.setImage(UIImage(named: "checbox"), for: .normal)
             print("buttondeselct")
             validationVS = false
-            validacion = 0
             UserDefaults.standard.removeObject(forKey: "opciones")
             UserDefaults.standard.synchronize()
         }
@@ -145,12 +196,15 @@ extension ConfigurationViewController {
             validationS = false
             UserDefaults.standard.set("Solo Vibrar", forKey: "opciones")
             UserDefaults.standard.synchronize()
+            buttonMarioBros.setImage(UIImage(named: "checbox"), for: .normal)
+            buttonTono.setImage(UIImage(named: "checbox"), for: .normal)
+            UserDefaults.standard.removeObject(forKey: "sonido")
+            UserDefaults.standard.synchronize()
         
         }else{
             buttonVibrar.setImage(UIImage(named: "checbox"), for: .normal)
             print("buttondeselct")
             validationSV = false
-            validacion = 0
             UserDefaults.standard.removeObject(forKey: "opciones")
             UserDefaults.standard.synchronize()
         }
@@ -173,11 +227,48 @@ extension ConfigurationViewController {
             buttonSonido.setImage(UIImage(named: "checbox"), for: .normal)
             print("buttondeselct")
             validationS = false
-            validacion = 0
             UserDefaults.standard.removeObject(forKey: "opciones")
             UserDefaults.standard.synchronize()
         }
     }
+
+    @objc func marioBros(){
+        if validationBmario == false {
+            buttonMarioBros.setImage(UIImage(named: "checboxselec"), for: .normal)
+            print("buttonMarioBros")
+            validationBmario = true
+            buttonTono.setImage(UIImage(named: "checbox"), for: .normal)
+            validationTono = false
+            UserDefaults.standard.set("MarioBros", forKey: "sonido")
+            UserDefaults.standard.synchronize()
+        }else{
+            buttonMarioBros.setImage(UIImage(named: "checbox"), for: .normal)
+            print("buttondeselct")
+            validationBmario = false
+            UserDefaults.standard.removeObject(forKey: "sonido")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    @objc func tono(){
+        if validationTono == false {
+            buttonTono.setImage(UIImage(named: "checboxselec"), for: .normal)
+            print("buttonTono")
+            validationTono = true
+            buttonMarioBros.setImage(UIImage(named: "checbox"), for: .normal)
+            validationBmario = false
+            UserDefaults.standard.set("Tono", forKey: "sonido")
+            UserDefaults.standard.synchronize()
+        }else{
+            buttonTono.setImage(UIImage(named: "checbox"), for: .normal)
+            print("buttondeselct")
+            validationTono = false
+            UserDefaults.standard.removeObject(forKey: "sonido")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
     
     func preference() {
         if let preference = UserDefaults.standard.string(forKey: "opciones") {
@@ -198,17 +289,19 @@ extension ConfigurationViewController {
                 print("defauld")
             }
         }
-    }
-    
-    func reprodutor(){
         
-        let mariobros: NSURL = Bundle.main.url(forResource: "Mariobros",withExtension: "mp3")! as NSURL
-        do{
-            try player = AVAudioPlayer(contentsOf: mariobros as URL)
-        }catch{
-            
+        if let preferenceSound = UserDefaults.standard.string(forKey: "sonido"){
+            switch preferenceSound {
+            case "MarioBros":
+                validationBmario = true
+                buttonMarioBros.setImage(UIImage(named: "checboxselec"), for: .normal)
+            case "Tono":
+                validationTono = true
+                buttonTono.setImage(UIImage(named: "checboxselec"), for: .normal)
+            default:
+                print("default")
+            }
         }
-        
     }
-    
+        
 }

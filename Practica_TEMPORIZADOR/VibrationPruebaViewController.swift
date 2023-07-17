@@ -8,13 +8,11 @@
 import UIKit
 import AVKit
 
+
+
 class VibrationPruebaViewController: UIViewController {
 
-    enum SoundOption: String {
-        case MarioBros
-        case Tono
-    }
-    
+   
     var player: AVAudioPlayer?
 
     private var startStopButton: UIButton = {
@@ -58,7 +56,8 @@ class VibrationPruebaViewController: UIViewController {
     @objc private func stopVibration() {
         Vibrator.shared.stopHaptic()
         Vibrator.shared.stopVibrate()
-        playSound(soud: .MarioBros)
+        playSound(soud: .Tono)
+        print("stopBUtton")
       
         
     }

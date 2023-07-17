@@ -10,6 +10,7 @@
 
 import UIKit
 import CoreMotion
+import AVKit
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
 
@@ -25,7 +26,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     let motion = CMMotionManager()
     var contador: Int = 0
     var defaults = UserDefaults.standard
-    
+    var player: AVAudioPlayer?
     var datov: Int = 0
     
     private var labelTemporizador: UILabel = {
@@ -134,11 +135,6 @@ extension HomeViewController {
             startStopButton.layer.backgroundColor = UIColor.systemGreen.cgColor
             startStopButton.setTitleColor(UIColor.white, for: .normal)
             print("boton inicio")
-            if let opciones = UserDefaults.standard.string(forKey: "opciones") {
-                print("valor en user defaulds::: \(opciones)")
-            } else {
-                print("no hay valores")
-            }
         }
         else {
                 timerCounting = true
@@ -180,6 +176,16 @@ extension HomeViewController {
                 self.startStopButton.setTitle("INICIAR", for: .normal)
                 self.startStopButton.layer.backgroundColor = UIColor.systemOrange.cgColor
                                configVibration()
+            if let preferenceSound = UserDefaults.standard.string(forKey: "sonido"){
+                switch preferenceSound {
+                case "MarioBros":
+                    playSound(soud: .MarioBros)
+                case "Tono":
+                    playSound(soud: .Tono)
+                default:
+                    print("default")
+                }
+            }
                }
     }
     
@@ -201,14 +207,17 @@ extension HomeViewController {
     func MyGryo(){
         motion.gyroUpdateInterval = 0.5
         motion.startGyroUpdates(to: OperationQueue.current!) { (data, error) in
+            
             if let trueData = data{
-                
                 if trueData.rotationRate.x < 0 {
 //                    print("celular en reposo")
                     self.contador += 1
-//                    print("contador:::: \(self.contador)")
+                    print("contador:::: \(self.contador)")
                     if self.contador == 8 {
-                        self.startStopTapped()
+                        let textField = Int((self.timerTextField.text?.convertToTimeInterval())!) - 1
+                        if(textField > 0) {
+                            self.startStopTapped()
+                        }
                     }
                     
                 }else {
@@ -241,6 +250,20 @@ extension HomeViewController {
         }
     }
     
+    
+    func playSound(soud: SoundOption){
+        
+        guard let rutaAlArchivo = Bundle.main.url(forResource: soud.rawValue, withExtension: "mp3") else { return }
+        
+        do{
+            player = try AVAudioPlayer(contentsOf: rutaAlArchivo)
+            player?.play()
+        }catch let error {
+            print("Error playing sound. \(error.localizedDescription)")
+        }
+        
+     
+    }
     
 }
 
