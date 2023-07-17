@@ -12,11 +12,11 @@ import Foundation
 
 //MARK: Wireframe -
 protocol ConfigurationWireframeProtocol: AnyObject {
-
+    func sendData(dato: Int)
 }
 //MARK: Presenter -
 protocol ConfigurationPresenterProtocol: AnyObject {
-
+    func sendData(dato: Int)
 }
 
 //MARK: Interactor -

@@ -19,16 +19,16 @@ protocol HomeWireframeProtocol: AnyObject {
 protocol HomePresenterProtocol: AnyObject {
     func comentariosVc()
     func configurationVc()
+    func sendData(dato: Int)
 }
 
 //MARK: Interactor -
 protocol HomeInteractorProtocol: AnyObject {
-
   var presenter: HomePresenterProtocol?  { get set }
 }
 
 //MARK: View -
 protocol HomeViewProtocol: AnyObject {
-
+    func sendData(dato: Int)
   var presenter: HomePresenterProtocol?  { get set }
 }

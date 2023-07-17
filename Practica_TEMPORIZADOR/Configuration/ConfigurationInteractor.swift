@@ -17,5 +17,8 @@ class ConfigurationInteractor {
 
 //MARK: - Interactor Methods
 extension ConfigurationInteractor: ConfigurationInteractorProtocol {
+
     
+    
+  
 }

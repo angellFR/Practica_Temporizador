@@ -9,201 +9,9 @@
 //
 
 import UIKit
+import CoreMotion
 
-//class HomeViewController: UIViewController {
-//
-//    //MARK: - Protocol Properties
-//	var presenter: HomePresenterProtocol?
-//
-//    //MARK: - Properties
-//
-//        var timer = Timer()
-//        var timerMinuto = Timer()
-//        var seconds = 59
-//        var minuto = 59
-//
-//    private var labelTemporizador: UILabel = {
-//        let label = UILabel()
-//        label.text = "59"
-//        label.textColor = .white
-//        label.font = UIFont(name: "Arial Rounded MT Bold", size: 70)
-//        label.textAlignment = .center
-//        return label
-//    }()
-//
-//    private var labelTemporizadorMinuto: UILabel = {
-//        let label = UILabel()
-//        label.text = "59"
-//        label.textColor = .white
-//        label.font = UIFont(name: "Arial Rounded MT Bold", size: 70)
-//        label.textAlignment = .center
-//        return label
-//    }()
-//
-//    private var buttonStarStop: UIButton = {
-//        let button = UIButton()
-//        button.layer.backgroundColor = UIColor.systemOrange.cgColor
-//        button.layer.cornerRadius = 20
-//        button.setTitle("Iniciar", for: .normal)
-//        button.setTitleColor(UIColor.black, for: .normal)
-//        button.addTarget(self, action: #selector(starButton), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    private var buttonPausa: UIButton = {
-//        let button = UIButton()
-//        button.layer.backgroundColor = UIColor.systemOrange.cgColor
-//        button.layer.cornerRadius = 20
-//        button.setTitle("Pausa", for: .normal)
-//        button.setTitleColor(UIColor.black, for: .normal)
-//        button.addTarget(self, action: #selector(pauseButton), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    private var buttonReset: UIButton = {
-//        let button = UIButton()
-//        button.layer.backgroundColor = UIColor.systemOrange.cgColor
-//        button.layer.cornerRadius = 20
-//        button.setTitle("Reset", for: .normal)
-//        button.setTitleColor(UIColor.black, for: .normal)
-//        button.addTarget(self, action: #selector(resetButton), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    private var buttonMas: UIButton = {
-//        let button = UIButton()
-//        button.layer.backgroundColor = UIColor.systemOrange.cgColor
-//        button.layer.cornerRadius = 20
-//        button.setTitle("+5", for: .normal)
-//        button.setTitleColor(UIColor.black, for: .normal)
-//        button.addTarget(self, action: #selector(addSecond), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    private var buttonMenos: UIButton = {
-//        let button = UIButton()
-//        button.layer.backgroundColor = UIColor.systemOrange.cgColor
-//        button.layer.cornerRadius = 20
-//        button.setTitle("-5", for: .normal)
-//        button.setTitleColor(UIColor.black, for: .normal)
-//        button.addTarget(self, action: #selector(minusSecond), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    //MARK: - Life Cycle
-//	override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = .black
-//        setupUI()
-//    }
-//
-//    //MARK: - Methods
-//
-//    func setupUI(){
-//
-//        var buttonDeteail = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: #selector(Detalles))
-//        navigationItem.rightBarButtonItem = buttonDeteail
-//
-//        navigationController?.navigationBar.tintColor = .white
-//        view.addSubview(labelTemporizador)
-////        labelTemporizador.addAnchorsAndCenter(centerX: true, centerY: false, width:50, height: 50, left: nil, top: 150, right: nil, bottom: nil)
-//        labelTemporizador.addAnchorsAndSize(width: 85, height: 70, left: nil, top: 150, right: 20, bottom: nil)
-//
-//        view.addSubview(labelTemporizadorMinuto)
-//        labelTemporizadorMinuto.addAnchorsAndSize(width: 85, height: 70, left: nil, top: 150, right: 10, bottom: nil, withAnchor: .right,  relativeToView: labelTemporizador)
-//
-//        view.addSubview(buttonStarStop)
-//        buttonStarStop.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 100, right: nil, bottom: nil, withAnchor: .top, relativeToView: labelTemporizador)
-//
-//        view.addSubview(buttonPausa)
-//        buttonPausa.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: buttonStarStop)
-//
-//        view.addSubview(buttonReset)
-//        buttonReset.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: buttonPausa)
-//
-//        view.addSubview(buttonMas)
-//        buttonMas.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: buttonReset)
-//
-//        view.addSubview(buttonMenos)
-//        buttonMenos.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: buttonMas)
-//
-//    }
-//}
-//
-////MARK: - View Methods
-//extension HomeViewController: HomeViewProtocol {
-//
-//}
-//
-////MARK: - Private functions
-//
-//extension HomeViewController {
-//
-//    @objc func starButton(){
-//        print("startButton")
-////        make sure there arent any others timers running
-//        timer.invalidate()
-////        create the timer
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HomeViewController.timerClass), userInfo: nil, repeats: true)
-//        timerMinuto = Timer.scheduledTimer(timeInterval: 59, target: self, selector: #selector(HomeViewController.minutoClass), userInfo: nil, repeats: true)
-//    }
-//
-//    @objc func pauseButton(){
-//        print("pausebutton")
-//        timer.invalidate()
-//    }
-//
-//    @objc func resetButton(){
-//        print("restButton")
-//        timer.invalidate()
-//        timerMinuto.invalidate()
-//        seconds = 59
-//        minuto = 59
-//        labelTemporizador.text = String(seconds)
-//        labelTemporizadorMinuto.text = String(minuto)
-//    }
-//
-//    @objc func addSecond(){
-//        print("anadir 5 segundos")
-//        seconds = seconds + 5
-//        labelTemporizador.text = String(seconds)
-//    }
-//
-//    @objc func minusSecond(){
-//        print("restar 5 segundos")
-//        seconds = seconds - 5
-//        labelTemporizador.text = String(seconds)
-//    }
-//
-//    @objc func timerClass(){
-//        print("timerclass")
-//        seconds -= 1
-//        labelTemporizador.text = String(seconds)
-//
-//        if(seconds == 0){
-//            timer.invalidate()
-//        }
-//
-//    }
-//
-//    @objc func minutoClass(){
-//        print("timerclassMinuto")
-//        minuto -= 1
-//        labelTemporizadorMinuto.text = String(minuto)
-//
-//        if(minuto == 0){
-//            timer.invalidate()
-//        }
-//    }
-//
-//    @objc func Detalles(){
-//
-//    }
-//
-//
-//}
-
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: - Protocol Properties
     var presenter: HomePresenterProtocol?
@@ -213,6 +21,12 @@ class HomeViewController: UIViewController {
     var timer: Timer = Timer()
     var count: Int = 120
     var timerCounting: Bool = false
+    let manager = CMMotionActivityManager()
+    let motion = CMMotionManager()
+    var contador: Int = 0
+    var defaults = UserDefaults.standard
+    
+    var datov: Int = 0
     
     private var labelTemporizador: UILabel = {
         let label = UILabel()
@@ -221,6 +35,15 @@ class HomeViewController: UIViewController {
         label.font = UIFont(name: "Arial Rounded MT Bold", size: 70)
         label.textAlignment = .center
         return label
+    }()
+    
+    private lazy var timerTextField : UITextField = {
+       let timer = UITextField()
+        timer.text = "00:00:00"
+        timer.textColor = .white
+        timer.font = UIFont(name: "Helvetica", size: 70)
+        timer.textAlignment = .center
+        return timer
     }()
     
     private var startStopButton: UIButton = {
@@ -248,60 +71,74 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupUI()
+
     }
     
     //MARK: - Methods
     
     func setupUI(){
-//
-//        var buttonDeteail = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: #selector(Detalles))
-//        navigationItem.rightBarButtonItem = buttonDeteail
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .done, target: self, action: #selector(Detalles))
+
+        view.addSubview(timerTextField)
+        timerTextField.addAnchorsAndSize(width: nil, height: 80, left: 10, top: 200, right: 10, bottom: nil)
+        
         navigationController?.navigationBar.tintColor = .white
-        view.addSubview(labelTemporizador)
-        labelTemporizador.addAnchorsAndCenter(centerX: true, centerY: false, width:width, height: 70, left: nil, top: 200, right: nil, bottom: nil)
-//        labelTemporizador.addAnchorsAndSize(width: width, height: 70, left: nil, top: 150, right: 20, bottom: nil)
         
         view.addSubview(startStopButton)
-        startStopButton.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 100, right: nil, bottom: nil, withAnchor: .top, relativeToView: labelTemporizador)
+        startStopButton.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 100, right: nil, bottom: nil, withAnchor: .top, relativeToView: timerTextField)
         
         view.addSubview(buttonReset)
         buttonReset.addAnchorsAndCenter(centerX: true, centerY: false, width: 300, height: 50, left: nil, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: startStopButton)
+        MyGryo()
+        startAtomatic()
         
-//        buttonDeteail.menu = addMenuItems()
-        
+        self.timerTextField.delegate = self
     }
 }
 
 //MARK: - View Methods
 extension HomeViewController: HomeViewProtocol {
+    func sendData(dato: Int) {
+        datov = dato
+    }
+    
     
     func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
         return ((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
     }
     
-//    func addMenuItems() -> UIMenu {
-//        let menuItmes = UIMenu(title: "::", options: .displayInline, children: [
-//            UIAction(title: "Configuracion", handler: { (_) in print("menu configuracion")}),
-//            UIAction(title: "Comentarios", handler: { (_) in print("menu comentarios")}),
-//        ])
-//
-//        return menuItmes
-//    }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        timerTextField.resignFirstResponder()
+        return false
+    }
 }
 
 //MARK: - Private functions
 
 extension HomeViewController {
+    func startAtomatic(){
+        if contador == 10 {
+            print("empieza el temporizador")
+        
+        } else {
+            print("el celular esta en movimiento")
+        }
+    }
      
     @objc func startStopTapped(){
+        
         if(timerCounting){
             timerCounting = false
             timer.invalidate()
             startStopButton.setTitle("RENUDAR", for: .normal)
             startStopButton.layer.backgroundColor = UIColor.systemGreen.cgColor
             startStopButton.setTitleColor(UIColor.white, for: .normal)
+            print("boton inicio")
+            if let opciones = UserDefaults.standard.string(forKey: "opciones") {
+                print("valor en user defaulds::: \(opciones)")
+            } else {
+                print("no hay valores")
+            }
         }
         else {
                 timerCounting = true
@@ -320,25 +157,29 @@ extension HomeViewController {
         alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (_) in
             self.count = 120
             self.timer.invalidate()
-            self.labelTemporizador.text = self.makeTimeString(hours: 0, minutes: 1, seconds: 59)
+            self.timerTextField.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
             self.startStopButton.setTitleColor(UIColor.white, for: .normal)
-            print(self.makeTimeString(hours: 0, minutes: 0, seconds: 0))
+            print("::::::: \(self.makeTimeString(hours: 0, minutes: 0, seconds: 0))")
             self.startStopButton.setTitle("INICIAR", for: .normal)
             self.startStopButton.layer.backgroundColor = UIColor.systemOrange.cgColor
         }))
         self.present(alert, animated: true, completion: nil)
-        
+        Vibrator.shared.stopHaptic()
+        Vibrator.shared.stopVibrate()
  
     }
     
     @objc func timerCounter() -> Void {
-        count = count - 1
+        count = Int((timerTextField.text?.convertToTimeInterval())!) - 1
         let time = secondsToHoursMinutesSeconds(seconds: count)
         let timeString = makeTimeString(hours: time.0, minutes: time.1 , seconds: time.2)
-        labelTemporizador.text = timeString
-        
+        timerTextField.text = timeString
+        print(timeString)
         if(count == 0){
                    timer.invalidate()
+                self.startStopButton.setTitle("INICIAR", for: .normal)
+                self.startStopButton.layer.backgroundColor = UIColor.systemOrange.cgColor
+                               configVibration()
                }
     }
     
@@ -357,4 +198,65 @@ extension HomeViewController {
         
     }
     
+    func MyGryo(){
+        motion.gyroUpdateInterval = 0.5
+        motion.startGyroUpdates(to: OperationQueue.current!) { (data, error) in
+            if let trueData = data{
+                
+                if trueData.rotationRate.x < 0 {
+//                    print("celular en reposo")
+                    self.contador += 1
+//                    print("contador:::: \(self.contador)")
+                    if self.contador == 8 {
+                        self.startStopTapped()
+                    }
+                    
+                }else {
+//                    print("celular en movimiento")
+                    self.contador = 0
+//                    print("contador reposo ----- \(self.contador)")
+                }
+              
+            }
+        }
+    }
+    
+    
+    func configVibration() {
+        if let preference = UserDefaults.standard.string(forKey: "opciones") {
+            
+            switch preference {
+            case "Vibrar y Sonido":
+                print("vibrar y sonido")
+                Vibrator.shared.startVibrate(frequency: .low, loop: true)
+            case "Solo Vibrar":
+                print("Solo Vibrar")
+                Vibrator.shared.startVibrate(frequency: .low, loop: true)
+            case "Solo Sonido" :
+                print("Solo Sonido")
+            default:
+                print("defauld")
+                
+            }
+        }
+    }
+    
+    
+}
+
+extension String {
+    func convertToTimeInterval() -> TimeInterval {
+        guard self != "" else {
+            return 0
+        }
+
+        var interval:Double = 0
+
+        let parts = self.components(separatedBy: ":")
+        for (index, part) in parts.reversed().enumerated() {
+            interval += (Double(part) ?? 0) * pow(Double(60), Double(index))
+        }
+
+        return interval
+    }
 }

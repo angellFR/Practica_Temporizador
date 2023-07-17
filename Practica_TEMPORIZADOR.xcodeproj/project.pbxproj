@@ -9,16 +9,22 @@
 /* Begin PBXBuildFile section */
 		C38F51942A57ADFF0069986E /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F51932A57ADFF0069986E /* ContainerViewController.swift */; };
 		C38F51962A57BAC10069986E /* MenuOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F51952A57BAC10069986E /* MenuOptionsViewController.swift */; };
+		C392BE022A5C5BFD006C8EA2 /* VibrationPruebaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BE012A5C5BFD006C8EA2 /* VibrationPruebaViewController.swift */; };
+		C392BE042A5C5D5A006C8EA2 /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BE032A5C5D5A006C8EA2 /* Vibrator.swift */; };
+		C392BE072A5C65E3006C8EA2 /* AppleHapticAudioPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BE062A5C65E3006C8EA2 /* AppleHapticAudioPattern.swift */; };
 		C392D5072A564A84007994E5 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D5012A564A84007994E5 /* HomePresenter.swift */; };
 		C392D5082A564A84007994E5 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D5022A564A84007994E5 /* HomeRouter.swift */; };
 		C392D5092A564A84007994E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D5032A564A84007994E5 /* HomeViewController.swift */; };
 		C392D50A2A564A84007994E5 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D5042A564A84007994E5 /* HomeProtocols.swift */; };
 		C392D50B2A564A84007994E5 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D5052A564A84007994E5 /* HomeInteractor.swift */; };
+		C396D7142A619FFF00F9C075 /* Mariobros.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C396D7132A619FFF00F9C075 /* Mariobros.mp3 */; };
+		C396D7172A61A0B600F9C075 /* Tono.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C396D7162A61A0B600F9C075 /* Tono.mp3 */; };
 		C3970C612A58629A009E30CA /* ConfigurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3970C602A58629A009E30CA /* ConfigurationTableViewCell.swift */; };
 		C3970C632A587104009E30CA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3970C622A587104009E30CA /* Data.swift */; };
 		C3A5B6B12A561FBB0081F39D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5B6B02A561FBB0081F39D /* AppDelegate.swift */; };
 		C3A5B6BA2A561FBE0081F39D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A5B6B92A561FBE0081F39D /* Assets.xcassets */; };
 		C3A5B6C72A56230D0081F39D /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5B6C62A56230D0081F39D /* UIExtension.swift */; };
+		C3EC3C7D2A58940400CD1588 /* CoreMotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EC3C7C2A58940400CD1588 /* CoreMotionViewController.swift */; };
 		C3ECBF7A2A578E5400CBD5DB /* ComentariosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ECBF742A578E5400CBD5DB /* ComentariosPresenter.swift */; };
 		C3ECBF7B2A578E5400CBD5DB /* ComentariosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ECBF752A578E5400CBD5DB /* ComentariosRouter.swift */; };
 		C3ECBF7C2A578E5400CBD5DB /* ComentariosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ECBF762A578E5400CBD5DB /* ComentariosViewController.swift */; };
@@ -34,11 +40,16 @@
 /* Begin PBXFileReference section */
 		C38F51932A57ADFF0069986E /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		C38F51952A57BAC10069986E /* MenuOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionsViewController.swift; sourceTree = "<group>"; };
+		C392BE012A5C5BFD006C8EA2 /* VibrationPruebaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationPruebaViewController.swift; sourceTree = "<group>"; };
+		C392BE032A5C5D5A006C8EA2 /* Vibrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibrator.swift; sourceTree = "<group>"; };
+		C392BE062A5C65E3006C8EA2 /* AppleHapticAudioPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleHapticAudioPattern.swift; sourceTree = "<group>"; };
 		C392D5012A564A84007994E5 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		C392D5022A564A84007994E5 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		C392D5032A564A84007994E5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C392D5042A564A84007994E5 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		C392D5052A564A84007994E5 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		C396D7132A619FFF00F9C075 /* Mariobros.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mariobros.mp3; sourceTree = "<group>"; };
+		C396D7162A61A0B600F9C075 /* Tono.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Tono.mp3; sourceTree = "<group>"; };
 		C3970C602A58629A009E30CA /* ConfigurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewCell.swift; sourceTree = "<group>"; };
 		C3970C622A587104009E30CA /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		C3A5B6AD2A561FBB0081F39D /* Practica_TEMPORIZADOR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practica_TEMPORIZADOR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +57,7 @@
 		C3A5B6B92A561FBE0081F39D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3A5B6BE2A561FBE0081F39D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3A5B6C62A56230D0081F39D /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		C3EC3C7C2A58940400CD1588 /* CoreMotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMotionViewController.swift; sourceTree = "<group>"; };
 		C3ECBF742A578E5400CBD5DB /* ComentariosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentariosPresenter.swift; sourceTree = "<group>"; };
 		C3ECBF752A578E5400CBD5DB /* ComentariosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentariosRouter.swift; sourceTree = "<group>"; };
 		C3ECBF762A578E5400CBD5DB /* ComentariosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentariosViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C392BE052A5C65D1006C8EA2 /* Vibrator */ = {
+			isa = PBXGroup;
+			children = (
+				C392BE032A5C5D5A006C8EA2 /* Vibrator.swift */,
+				C392BE062A5C65E3006C8EA2 /* AppleHapticAudioPattern.swift */,
+			);
+			path = Vibrator;
+			sourceTree = "<group>";
+		};
 		C392D5002A564A5F007994E5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +100,15 @@
 				C392D5052A564A84007994E5 /* HomeInteractor.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		C396D7152A61A0A400F9C075 /* Sonidos */ = {
+			isa = PBXGroup;
+			children = (
+				C396D7162A61A0B600F9C075 /* Tono.mp3 */,
+				C396D7132A619FFF00F9C075 /* Mariobros.mp3 */,
+			);
+			path = Sonidos;
 			sourceTree = "<group>";
 		};
 		C3970C5E2A585BCC009E30CA /* Side Menu */ = {
@@ -118,11 +148,15 @@
 		C3A5B6AF2A561FBB0081F39D /* Practica_TEMPORIZADOR */ = {
 			isa = PBXGroup;
 			children = (
+				C396D7152A61A0A400F9C075 /* Sonidos */,
+				C392BE052A5C65D1006C8EA2 /* Vibrator */,
 				C3ECBF732A578DF700CBD5DB /* Comentarios */,
 				C3ECBF722A578DE800CBD5DB /* Configuration */,
 				C392D5002A564A5F007994E5 /* Home */,
 				C3970C5E2A585BCC009E30CA /* Side Menu */,
 				C3A5B6B02A561FBB0081F39D /* AppDelegate.swift */,
+				C3EC3C7C2A58940400CD1588 /* CoreMotionViewController.swift */,
+				C392BE012A5C5BFD006C8EA2 /* VibrationPruebaViewController.swift */,
 				C3A5B6B92A561FBE0081F39D /* Assets.xcassets */,
 				C3A5B6C62A56230D0081F39D /* UIExtension.swift */,
 				C3A5B6BE2A561FBE0081F39D /* Info.plist */,
@@ -213,7 +247,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C396D7172A61A0B600F9C075 /* Tono.mp3 in Resources */,
 				C3A5B6BA2A561FBE0081F39D /* Assets.xcassets in Resources */,
+				C396D7142A619FFF00F9C075 /* Mariobros.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,17 +262,21 @@
 			files = (
 				C3970C612A58629A009E30CA /* ConfigurationTableViewCell.swift in Sources */,
 				C3ECBF7B2A578E5400CBD5DB /* ComentariosRouter.swift in Sources */,
+				C392BE022A5C5BFD006C8EA2 /* VibrationPruebaViewController.swift in Sources */,
 				C392D5082A564A84007994E5 /* HomeRouter.swift in Sources */,
 				C3ECBF8A2A578E6E00CBD5DB /* ConfigurationInteractor.swift in Sources */,
 				C3ECBF7A2A578E5400CBD5DB /* ComentariosPresenter.swift in Sources */,
 				C3ECBF7C2A578E5400CBD5DB /* ComentariosViewController.swift in Sources */,
 				C3ECBF892A578E6E00CBD5DB /* ConfigurationProtocols.swift in Sources */,
+				C392BE072A5C65E3006C8EA2 /* AppleHapticAudioPattern.swift in Sources */,
 				C3970C632A587104009E30CA /* Data.swift in Sources */,
 				C3A5B6B12A561FBB0081F39D /* AppDelegate.swift in Sources */,
 				C3ECBF872A578E6E00CBD5DB /* ConfigurationRouter.swift in Sources */,
 				C3ECBF862A578E6E00CBD5DB /* ConfigurationPresenter.swift in Sources */,
 				C3ECBF7E2A578E5400CBD5DB /* ComentariosInteractor.swift in Sources */,
+				C392BE042A5C5D5A006C8EA2 /* Vibrator.swift in Sources */,
 				C3ECBF882A578E6E00CBD5DB /* ConfigurationViewController.swift in Sources */,
+				C3EC3C7D2A58940400CD1588 /* CoreMotionViewController.swift in Sources */,
 				C392D50A2A564A84007994E5 /* HomeProtocols.swift in Sources */,
 				C392D5072A564A84007994E5 /* HomePresenter.swift in Sources */,
 				C392D50B2A564A84007994E5 /* HomeInteractor.swift in Sources */,

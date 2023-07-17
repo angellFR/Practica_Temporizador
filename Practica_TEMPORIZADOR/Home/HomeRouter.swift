@@ -32,6 +32,9 @@ class HomeRouter {
 
 //MARK: - Router Metods
 extension HomeRouter: HomeWireframeProtocol {
+    func createData(dato:Int){
+       
+    }
     func comentariosVc() {
         ComentariosRouter.createModule()
     }
@@ -39,7 +42,6 @@ extension HomeRouter: HomeWireframeProtocol {
     func configurationVc() {
         ConfigurationRouter.createModule()
     }
-    
     
 }
 

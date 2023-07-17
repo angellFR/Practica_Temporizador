@@ -26,6 +26,10 @@ class HomePresenter {
 
 //MARK: - Presenter Methods
 extension HomePresenter: HomePresenterProtocol {
+    func sendData(dato: Int) {
+        view?.sendData(dato: dato)
+    }
+    
     func comentariosVc() {
         router.comentariosVc()
     }

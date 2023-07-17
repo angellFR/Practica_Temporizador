@@ -17,5 +17,9 @@ class HomeInteractor {
 
 //MARK: - Interactor Methods
 extension HomeInteractor: HomeInteractorProtocol {
+    func sendData(dato: Int) {
+        presenter?.sendData(dato: dato)
+    }
+    
     
 }

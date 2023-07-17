@@ -16,15 +16,63 @@ class ComentariosViewController: UIViewController {
 	var presenter: ComentariosPresenterProtocol?
 
     //MARK: - Properties
+    private var labelName: UILabel = {
+        let label = UILabel()
+        label.text = "Nombre: "
+        return label
+    }()
+    
+    private var labelComentarios: UILabel = {
+        let label = UILabel()
+        label.text = "Comentarios: "
+        return label
+    }()
+    
+    private var texfieldName: UITextField = {
+        let textfield = UITextField()
+        textfield.layer.backgroundColor = UIColor.systemOrange.cgColor
+        textfield.placeholder = " Escribe tu Nombre"
+        return textfield
+    }()
+    
+    private var texfieldComentarios: UITextField = {
+        let textfield = UITextField()
+        textfield.layer.backgroundColor = UIColor.white.cgColor
+        textfield.layer.cornerRadius = 20
+        textfield.textAlignment = .natural
+        return textfield
+    }()
+    
+    private var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "person.circle")
+        imageView.tintColor = .white
+        return imageView
+    }()
     
     //MARK: - Life Cycle
 	override func viewDidLoad() {
         super.viewDidLoad()
         title = "comentarios"
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemOrange
+        setupUI()
     }
     
     //MARK: - Methods
+    func setupUI(){
+        view.addSubview(imageView)
+        imageView.addAnchorsAndCenter(centerX: true, centerY: false, width: 130, height: 130, left: nil, top: 150, right: nil, bottom: nil)
+        
+        view.addSubview(texfieldName)
+        texfieldName.addAnchorsAndSize(width: nil, height: 30, left: 10, top: 50, right: 10, bottom: nil,withAnchor: .top,relativeToView: imageView)
+        
+        view.addSubview(labelComentarios)
+        labelComentarios.addAnchorsAndSize(width: nil, height: 30, left: 10, top: 20, right: 10, bottom: nil,withAnchor: .top,relativeToView: texfieldName)
+        
+        view.addSubview(texfieldComentarios)
+        texfieldComentarios.addAnchorsAndSize(width: nil, height: nil, left: 5, top: 20, right: 5, bottom: 50,withAnchor: .top,relativeToView: labelComentarios)
+        
+    }
 }
 
 //MARK: - View Methods

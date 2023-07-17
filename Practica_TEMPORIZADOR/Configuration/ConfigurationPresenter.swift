@@ -26,6 +26,10 @@ class ConfigurationPresenter {
 
 //MARK: - Presenter Methods
 extension ConfigurationPresenter: ConfigurationPresenterProtocol {
+    func sendData(dato: Int) {
+       
+    }
+    
     
 }
 

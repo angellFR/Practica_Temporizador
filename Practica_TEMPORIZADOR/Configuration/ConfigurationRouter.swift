@@ -32,6 +32,10 @@ class ConfigurationRouter {
 
 //MARK: - Router Metods
 extension ConfigurationRouter: ConfigurationWireframeProtocol {
+    func sendData(dato: Int) {
+      
+    }
+    
     
 }
 

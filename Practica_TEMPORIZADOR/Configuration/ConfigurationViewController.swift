@@ -9,71 +9,206 @@
 //
 
 import UIKit
+import AVKit
 
-class ConfigurationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConfigurationViewController: UIViewController {
 
     //MARK: - Protocol Properties
 	var presenter: ConfigurationPresenterProtocol?
 
     //MARK: - Properties
-    var opciones = ["Vibrar y Sonido", "Solo sonido", "Solo Vibrar"]
+    let defaults = UserDefaults.standard
+    var validationVS = false
+    var validationSV = false
+    var validationS = false
+    var validacion: Int = 0
+    var player: AVAudioPlayer?
     
-    private var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = nil
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ConfigurationTableViewCell.self, forCellReuseIdentifier: "ConfigurationTableViewCell")
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        return tableView
+    
+    private var labelVibrarSonido: UILabel = {
+        let label = UILabel()
+        label.text = "Vibrar y Sonido"
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
+        return label
     }()
+    
+    private var buttonVibrarSonito: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "checbox"), for: .normal)
+        button.addTarget(self, action: #selector(vibrarSonido), for: .touchUpInside)
+        return button
+    }()
+    
+    private var buttonVibrar: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "checbox"), for: .normal)
+        button.addTarget(self, action: #selector(solovibrar), for: .touchUpInside)
+        return button
+    }()
+    
+    private var labelVibrar: UILabel = {
+        let label = UILabel()
+        label.text = "Solo Vibrar"
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
+        return label
+    }()
+    
+    private var buttonSonido: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "checbox"), for: .normal)
+        button.addTarget(self, action: #selector(soloSonido), for: .touchUpInside)
+        return button
+    }()
+    
+    private var labelSonido: UILabel = {
+        let label = UILabel()
+        label.text = "Solo Sonido"
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
+        return label
+    }()
+    
     
     //MARK: - Life Cycle
 	override func viewDidLoad() {
         super.viewDidLoad()
         title = "Configuration"
         view.backgroundColor = .systemOrange
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-//        view.backgroundColor = colorTableView
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        tableView.reloadData()
+        setupUI()
+        preference()
     }
     
     //MARK: - Methods
+    func setupUI(){
+        view.addSubview(buttonVibrarSonito)
+        buttonVibrarSonito.addAnchorsAndSize(width: 50, height: 50, left: 35, top: 100, right: nil, bottom: nil)
+        
+        view.addSubview(labelVibrarSonido)
+        labelVibrarSonido.addAnchorsAndSize(width: nil, height: nil, left: 30, top: 110, right: nil, bottom: nil, withAnchor: .left, relativeToView: buttonVibrarSonito)
+        
+        view.addSubview(buttonVibrar)
+        buttonVibrar.addAnchorsAndSize(width: 50, height: 50, left: 35, top: 20, right: nil, bottom: nil,withAnchor: .top, relativeToView: buttonVibrarSonito)
+        
+        view.addSubview(labelVibrar)
+        labelVibrar.addAnchorsAndSize(width: nil, height: nil, left: 115, top: 50, right: nil, bottom: nil,withAnchor: .top ,relativeToView: labelVibrarSonido)
+        
+        view.addSubview(buttonSonido)
+        buttonSonido.addAnchorsAndSize(width: 50, height: 50, left: 35, top: 20, right: nil, bottom: nil,withAnchor: .top, relativeToView: buttonVibrar)
+        
+        view.addSubview(labelSonido)
+        labelSonido.addAnchorsAndSize(width: nil, height: nil, left: 115, top: 50, right: nil, bottom: nil, withAnchor: .top, relativeToView: labelVibrar)
+        
+        
+    }
 }
 
 //MARK: - View Methods
 extension ConfigurationViewController: ConfigurationViewProtocol {
+
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return MenuOptions.allCases.count
-        listTable.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ConfigurationTableViewCell", for: indexPath) as! ConfigurationTableViewCell
-        let model = listTable[indexPath.row]
-        var listContentfiguration = UIListContentConfiguration.cell()
-        listContentfiguration.text = model.title
-        listContentfiguration.image = UIImage(systemName: model.imageName)
-        cell.contentConfiguration = listContentfiguration
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-    }
     
 }
 
 //MARK: - Private functions
 extension ConfigurationViewController {
     
+    @objc func vibrarSonido(){
+      
+        if validationVS == false {
+            buttonVibrarSonito.setImage(UIImage(named: "checboxselec"), for: .normal)
+            print("buttonselect")
+            validationVS = true
+            buttonVibrar.setImage(UIImage(named: "checbox"), for: .normal)
+            buttonSonido.setImage(UIImage(named: "checbox"), for: .normal)
+            validationS = false
+            validationSV = false
+            UserDefaults.standard.set("Vibrar y Sonido", forKey: "opciones")
+            UserDefaults.standard.synchronize()
+        }else{
+            buttonVibrarSonito.setImage(UIImage(named: "checbox"), for: .normal)
+            print("buttondeselct")
+            validationVS = false
+            validacion = 0
+            UserDefaults.standard.removeObject(forKey: "opciones")
+            UserDefaults.standard.synchronize()
+        }
+    }
 
+    @objc func solovibrar(){
+      print(validationSV)
+        if validationSV == false {
+            buttonVibrar.setImage(UIImage(named: "checboxselec"), for: .normal)
+            print("buttonselect")
+            validationSV = true
+            buttonSonido.setImage(UIImage(named: "checbox"), for: .normal)
+            buttonVibrarSonito.setImage(UIImage(named: "checbox"), for: .normal)
+            validationVS = false
+            validationS = false
+            UserDefaults.standard.set("Solo Vibrar", forKey: "opciones")
+            UserDefaults.standard.synchronize()
+        
+        }else{
+            buttonVibrar.setImage(UIImage(named: "checbox"), for: .normal)
+            print("buttondeselct")
+            validationSV = false
+            validacion = 0
+            UserDefaults.standard.removeObject(forKey: "opciones")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    @objc func soloSonido(){
+      
+        if validationS == false {
+            buttonSonido.setImage(UIImage(named: "checboxselec"), for: .normal)
+            print("buttonselect:::::")
+            validationS = true
+            buttonVibrar.setImage(UIImage(named: "checbox"), for: .normal)
+            buttonVibrarSonito.setImage(UIImage(named: "checbox"), for: .normal)
+            validationVS = false
+            validationSV = false
+            UserDefaults.standard.set("Solo Sonido", forKey: "opciones")
+            UserDefaults.standard.synchronize()
+            
+        }else{
+            buttonSonido.setImage(UIImage(named: "checbox"), for: .normal)
+            print("buttondeselct")
+            validationS = false
+            validacion = 0
+            UserDefaults.standard.removeObject(forKey: "opciones")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    func preference() {
+        if let preference = UserDefaults.standard.string(forKey: "opciones") {
+            switch preference {
+            case "Vibrar y Sonido":
+                print("vibrar y sonido")
+                validationVS = true
+                buttonVibrarSonito.setImage(UIImage(named: "checboxselec"), for: .normal)
+            case "Solo Vibrar" :
+                print("solo vibrar")
+                validationSV = true
+                buttonVibrar.setImage(UIImage(named: "checboxselec"), for: .normal)
+            case "Solo Sonido" :
+                print("solo sonido")
+                validationS = true
+                buttonSonido.setImage(UIImage(named: "checboxselec"), for: .normal)
+            default:
+                print("defauld")
+            }
+        }
+    }
+    
+    func reprodutor(){
+        
+        let mariobros: NSURL = Bundle.main.url(forResource: "Mariobros",withExtension: "mp3")! as NSURL
+        do{
+            try player = AVAudioPlayer(contentsOf: mariobros as URL)
+        }catch{
+            
+        }
+        
+    }
+    
 }
