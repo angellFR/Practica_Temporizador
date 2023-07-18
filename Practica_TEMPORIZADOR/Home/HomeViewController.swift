@@ -148,9 +148,9 @@ extension HomeViewController {
      
     @objc func resetTapped(){
         print("restButton")
-        let alert = UIAlertController(title: "Reset Timer", message: "Are you sure you would like to reset the timer", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in }))
-        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (_) in
+        let alert = UIAlertController(title: "Resetear Temporizador", message: "Estas seguro que deseas restablecer el temporizador?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { (_) in }))
+        alert.addAction(UIAlertAction(title: "Si ", style: .default, handler: { (_) in
             self.count = 120
             self.timer.invalidate()
             self.timerTextField.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
